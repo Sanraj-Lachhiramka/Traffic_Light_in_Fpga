@@ -1,0 +1,22 @@
+module trafficlightsignal_3tb();
+logic clk,reset,x;
+logic [2:0]hwy;
+logic [2:0]cntry;
+
+trafficlightsignal_3 dut(clk,reset,x,hwy,cntry);
+initial begin
+clk=0;
+forever #5 clk=~clk;
+end
+initial begin
+reset=1;
+#10
+reset=0;
+x=0 ;
+#10
+x=1;
+#20
+x=0;
+#10
+#30 $finish;
+end
